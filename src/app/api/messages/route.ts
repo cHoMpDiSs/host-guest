@@ -49,7 +49,7 @@ export async function POST(request: Request) {
     return NextResponse.json(newMessage)
   } catch (error) {
     return NextResponse.json(
-      { error: 'Failed to send message' },
+      { error: error instanceof Error ? error.message : 'Failed to send message' },
       { status: 500 }
     )
   }

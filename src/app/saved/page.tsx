@@ -40,9 +40,8 @@ export default function SavedPage() {
 
   const handleRemove = async (id: string) => {
     try {
-      await fetch(`/api/saved/${id}`, {
-        method: 'DELETE',
-      })
+      console.log('Removing saved listing:', id)
+      
       setSavedListings(prev => prev.filter(listing => listing.id !== id))
     } catch (error) {
       console.error('Error removing saved listing:', error)
@@ -64,7 +63,7 @@ export default function SavedPage() {
 
         {savedListings.length === 0 ? (
           <div className="bg-white rounded-lg shadow p-6 text-center">
-            <p className="text-gray-500 mb-4">You haven't saved any properties yet.</p>
+            <p className="text-gray-500 mb-4">You haven&apos;t saved any properties yet.</p>
             <Link href="/">
               <Button>Browse Properties</Button>
             </Link>

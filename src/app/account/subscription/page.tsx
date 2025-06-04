@@ -115,7 +115,7 @@ export default function SubscriptionPage() {
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-900">No Active Subscription</h1>
             <p className="mt-4 text-gray-500">
-              You don't have an active subscription. Choose a plan to get started.
+              You don&apos;t have an active subscription. Choose a plan to get started.
             </p>
             <Link href="/pricing">
               <Button className="mt-6">View Plans</Button>

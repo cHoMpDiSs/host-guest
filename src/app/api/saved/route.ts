@@ -47,7 +47,7 @@ export async function POST(request: Request) {
     return NextResponse.json(newSavedListing)
   } catch (error) {
     return NextResponse.json(
-      { error: 'Failed to save listing' },
+      { error: error instanceof Error ? error.message : 'Failed to save listing' },
       { status: 500 }
     )
   }
