@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Button } from '@/components/ui/Button'
 import Link from 'next/link'
+import Image from 'next/image'
 
 // Validation schema
 const createListingSchema = z.object({
@@ -265,14 +266,20 @@ export function CreateListingForm() {
           </div>
         </div>
         {uploadedImages.length > 0 && (
-          <div className="mt-4 grid grid-cols-3 gap-4">
-            {uploadedImages.map((url, index) => (
+          <div className="mt-4 grid grid-cols-2 gap-4">
+            {uploadedImages.map((image, index) => (
               <div key={index} className="relative">
-                <img src={url} alt={`Preview ${index + 1}`} className="h-24 w-full object-cover rounded-md" />
+                <Image
+                  src={image}
+                  alt={`Property image ${index + 1}`}
+                  width={400}
+                  height={300}
+                  className="rounded-lg object-cover"
+                />
                 <button
                   type="button"
                   onClick={() => setUploadedImages(prev => prev.filter((_, i) => i !== index))}
-                  className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1 transform translate-x-1/2 -translate-y-1/2"
+                  className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
                 >
                   ×
                 </button>
