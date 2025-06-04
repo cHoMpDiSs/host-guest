@@ -1,69 +1,51 @@
 import { NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { PrismaClient } from '@prisma/client'
-import { z } from 'zod'
 
-const prisma = new PrismaClient()
+export async function GET() {
+  // Mock data for template
+  const listings = [
+    {
+      id: '1',
+      title: 'Cozy Room in City Center',
+      description: 'Beautiful room in the heart of the city',
+      price: 50,
+      location: '123 Main St',
+      city: 'San Francisco',
+      country: 'USA',
+      images: ['/images/hero-bg.jpg'],
+      amenities: ['WiFi', 'Kitchen', 'Washer'],
+      hostId: '1',
+    },
+    {
+      id: '2',
+      title: 'Modern Apartment with View',
+      description: 'Stunning apartment with city views',
+      price: 75,
+      location: '456 Park Ave',
+      city: 'New York',
+      country: 'USA',
+      images: ['/images/hero-bg.jpg'],
+      amenities: ['WiFi', 'Gym', 'Pool'],
+      hostId: '2',
+    },
+  ]
 
-// Validation schema for creating a listing
-const createListingSchema = z.object({
-  title: z.string().min(5).max(100),
-  description: z.string().min(20).max(1000),
-  price: z.number().positive(),
-  location: z.string().min(5).max(200),
-  city: z.string().min(2).max(100),
-  country: z.string().min(2).max(100),
-  amenities: z.array(z.string()),
-  images: z.array(z.string())
-})
+  return NextResponse.json(listings)
+}
 
 export async function POST(request: Request) {
   try {
-    // Check authentication
-    const session = await getServerSession()
-    if (!session?.user) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      )
-    }
-
-    // Get the user from the database
-    const user = await prisma.user.findUnique({
-      where: { email: session.user.email! }
+    const data = await request.json()
+    
+    // Mock successful response
+    return NextResponse.json({
+      id: Math.random().toString(36).substr(2, 9),
+      ...data,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     })
-
-    if (!user || user.userType !== 'HOST') {
-      return NextResponse.json(
-        { error: 'Only hosts can create listings' },
-        { status: 403 }
-      )
-    }
-
-    // Parse and validate request body
-    const body = await request.json()
-    const validatedData = createListingSchema.parse(body)
-
-    // Create the listing
-    const listing = await prisma.listing.create({
-      data: {
-        ...validatedData,
-        hostId: user.id
-      }
-    })
-
-    return NextResponse.json(listing, { status: 201 })
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: 'Invalid data', details: error.errors },
-        { status: 400 }
-      )
-    }
-
-    console.error('Error creating listing:', error)
+  } catch {
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Failed to create listing' },
       { status: 500 }
     )
   }
