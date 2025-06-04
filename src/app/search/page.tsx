@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/Button'
+import Image from 'next/image'
 
 export default function SearchPage() {
   return (
@@ -16,7 +17,7 @@ export default function SearchPage() {
               <input
                 type="text"
                 id="location"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                className="mt-1 block w-full rounded-md border-gray-400 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                 placeholder="Enter city or address"
               />
             </div>
@@ -28,7 +29,7 @@ export default function SearchPage() {
               </label>
               <select
                 id="distance"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                className="mt-1 block w-full rounded-md border-gray-400 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
               >
                 <option>01 - 05 Km</option>
                 <option>06 - 10 Km</option>
@@ -47,13 +48,13 @@ export default function SearchPage() {
                 <input
                   type="number"
                   id="price-from"
-                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                  className="block w-full rounded-md border-gray-400 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                   placeholder="From"
                 />
                 <input
                   type="number"
                   id="price-to"
-                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                  className="block w-full rounded-md border-gray-400 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                   placeholder="To"
                 />
               </div>
@@ -65,13 +66,13 @@ export default function SearchPage() {
                 Amenities
               </label>
               <div className="space-y-2">
-                <label className="inline-flex items-center">
+                <label className="inline-flex items-center mb-4">
                   <input type="checkbox" className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
-                  <span className="ml-2 text-sm text-gray-600">Internet</span>
+                  <span className="ml-2 mr-4 text-sm text-gray-800">Internet</span>
                 </label>
                 <label className="inline-flex items-center">
                   <input type="checkbox" className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
-                  <span className="ml-2 text-sm text-gray-600">Pets Allowed</span>
+                  <span className="ml-2 text-sm text-gray-800">Pets Allowed</span>
                 </label>
               </div>
             </div>
@@ -88,15 +89,21 @@ export default function SearchPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Sample Listing Card */}
           <div className="bg-white shadow rounded-lg overflow-hidden">
-            <div className="h-48 bg-gray-200">
-              {/* Image placeholder */}
+            <div className="relative h-48">
+              <Image
+                src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80"
+                alt="Cozy Room in City Center"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
             <div className="p-4">
               <h3 className="text-lg font-medium text-gray-900">Cozy Room in City Center</h3>
-              <p className="mt-1 text-sm text-gray-500">London, UK</p>
+              <p className="mt-1 text-sm text-gray-700">London, UK</p>
               <div className="mt-4 flex items-center justify-between">
                 <span className="text-lg font-medium text-gray-900">$50/night</span>
-                <Button variant="outline" size="sm">
+                <Button variant="secondary" size="sm">
                   View Details
                 </Button>
               </div>
