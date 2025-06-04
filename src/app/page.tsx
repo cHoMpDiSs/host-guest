@@ -1,9 +1,11 @@
 import { Hero } from '@/components/Hero'
+import PricingPreview from '@/components/PricingPreview'
 
 export default function Home() {
   return (
     <main>
       <Hero />
+      <PricingPreview />
       
       {/* Features Section */}
       <section className="py-24 bg-gray-50">
@@ -91,7 +93,7 @@ export default function Home() {
             <div className="inline-flex rounded-md shadow">
               <a
                 href="/signup"
-                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50"
+                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-blue-50"
               >
                 Get started
               </a>
