@@ -1,103 +1,104 @@
-import Image from "next/image";
+import { Hero } from '@/components/Hero'
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main>
+      <Hero />
+      
+      {/* Features Section */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+              Why Choose Host Guest?
+            </h2>
+            <p className="mt-4 text-lg text-gray-600">
+              Experience the perfect blend of comfort, culture, and community
+            </p>
+          </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          <div className="mt-20">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {/* Feature 1 */}
+              <div className="pt-6">
+                <div className="flow-root bg-white rounded-lg px-6 pb-8">
+                  <div className="-mt-6">
+                    <div>
+                      <span className="inline-flex items-center justify-center p-3 bg-blue-500 rounded-md shadow-lg">
+                        <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                      </span>
+                    </div>
+                    <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Verified Homes</h3>
+                    <p className="mt-5 text-base text-gray-500">
+                      Every home is verified for quality and safety to ensure a comfortable stay.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Feature 2 */}
+              <div className="pt-6">
+                <div className="flow-root bg-white rounded-lg px-6 pb-8">
+                  <div className="-mt-6">
+                    <div>
+                      <span className="inline-flex items-center justify-center p-3 bg-blue-500 rounded-md shadow-lg">
+                        <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </span>
+                    </div>
+                    <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Flexible Stays</h3>
+                    <p className="mt-5 text-base text-gray-500">
+                      Choose from short-term to long-term stays that fit your schedule.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Feature 3 */}
+              <div className="pt-6">
+                <div className="flow-root bg-white rounded-lg px-6 pb-8">
+                  <div className="-mt-6">
+                    <div>
+                      <span className="inline-flex items-center justify-center p-3 bg-blue-500 rounded-md shadow-lg">
+                        <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                        </svg>
+                      </span>
+                    </div>
+                    <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Cultural Exchange</h3>
+                    <p className="mt-5 text-base text-gray-500">
+                      Immerse yourself in local culture and make lasting connections.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </section>
+
+      {/* CTA Section */}
+      <section className="bg-blue-600">
+        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+          <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            <span className="block">Ready to find your next home?</span>
+            <span className="block text-blue-200">Join our community today.</span>
+          </h2>
+          <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+            <div className="inline-flex rounded-md shadow">
+              <a
+                href="/signup"
+                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50"
+              >
+                Get started
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
 }

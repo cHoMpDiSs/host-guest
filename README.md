@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏠 Host Guest - Your Home Away from Home
 
-## Getting Started
+A modern web application connecting guests with welcoming host families, offering an affordable and enriching alternative to traditional housing. Built with Next.js 14, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## ✨ Features
 
+- 🔐 **Secure Authentication**
+  - Email/Password login
+  - Google & Facebook OAuth integration
+  - JWT-based session management
+
+- 👥 **User Profiles**
+  - Separate host and guest interfaces
+  - Profile customization
+  - Verification system
+
+- 🏡 **Property Management**
+  - Detailed listing creation
+  - Photo uploads
+  - Availability calendar
+  - Pricing management
+
+- 🔍 **Advanced Search**
+  - Location-based search
+  - Filter by amenities
+  - Price range selection
+  - Distance calculation
+
+- 📱 **Responsive Design**
+  - Mobile-first approach
+  - Modern UI/UX
+  - Cross-browser compatibility
+
+## 🛠️ Tech Stack
+
+- **Frontend**
+  - Next.js 14 (React)
+  - TypeScript
+  - Tailwind CSS
+  - Lucide Icons
+
+- **Authentication**
+  - NextAuth.js
+  - OAuth providers
+
+- **Database**
+  - Prisma ORM
+  - PostgreSQL
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- PostgreSQL
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/host-guest.git
+cd host-guest
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables
+```bash
+# Create a .env file with the following variables
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/hostguest"
+NEXTAUTH_SECRET="your-nextauth-secret"
+NEXTAUTH_URL="http://localhost:3000"
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# OAuth credentials
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
+FACEBOOK_CLIENT_ID=""
+FACEBOOK_CLIENT_SECRET=""
+```
 
-## Learn More
+4. Initialize the database
+```bash
+npx prisma migrate dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+5. Start the development server
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Visit `http://localhost:3000` to see the application.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📁 Project Structure
 
-## Deploy on Vercel
+```
+host-guest/
+├── src/
+│   ├── app/              # Next.js app router pages
+│   ├── components/       # Reusable React components
+│   ├── lib/             # Utility functions and helpers
+│   └── types/           # TypeScript type definitions
+├── prisma/              # Database schema and migrations
+├── public/             # Static assets
+└── package.json        # Project dependencies
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🤝 Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Prisma](https://www.prisma.io/)
+- [NextAuth.js](https://next-auth.js.org/)

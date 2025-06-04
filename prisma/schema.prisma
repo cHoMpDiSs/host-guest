@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  emailVerified DateTime?
+  password      String
+  image         String?
+  userType      UserType  @default(GUEST)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  listings      Listing[]   @relation("HostListings")
+  bookings      Booking[]   @relation("GuestBookings")
+  hostBookings  Booking[]   @relation("HostBookings")
+  reviews       Review[]    @relation("UserReviews")
+  hostReviews   Review[]    @relation("HostReviews")
+}
+
+enum UserType {
+  GUEST
+  HOST
+}
+
+model Listing {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  price       Float
+  location    String
+  city        String
+  country     String
+  images      String[]
+  amenities   String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  host        User      @relation("HostListings", fields: [hostId], references: [id])
+  hostId      String
+  bookings    Booking[]
+  reviews     Review[]
+}
+
+model Booking {
+  id        String   @id @default(cuid())
+  startDate DateTime
+  endDate   DateTime
+  status    BookingStatus @default(PENDING)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  guest     User    @relation("GuestBookings", fields: [guestId], references: [id])
+  guestId   String
+  host      User    @relation("HostBookings", fields: [hostId], references: [id])
+  hostId    String
+  listing   Listing @relation(fields: [listingId], references: [id])
+  listingId String
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  rating    Int
+  comment   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user      User    @relation("UserReviews", fields: [userId], references: [id])
+  userId    String
+  host      User    @relation("HostReviews", fields: [hostId], references: [id])
+  hostId    String
+  listing   Listing @relation(fields: [listingId], references: [id])
+  listingId String
+} 
